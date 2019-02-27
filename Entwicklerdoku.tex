@@ -1,0 +1,150 @@
+\documentclass[a4paper, DIV=18, parskip=half]{scrartcl}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usepackage{subfig}
+\usepackage[noframe]{showframe}
+\usepackage{multicol}
+\usepackage{lmodern}
+\usepackage{lipsum}
+\usepackage{wrapfig}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage[libertine]{newtxmath}
+
+\usetikzlibrary{positioning}
+
+\newcommand{\letter}[1]{\textbf{\textcolor{black}{#1}}}
+\newcommand{\mymath}[1]{\textcolor{black}{$#1$}}
+
+\begin{document}
+%\begin{multicols}{2}
+
+\section{Zahleninterpreter}
+Die Grundlegenden Symbole, aus denen Zahlen zusammengesetzt sein können, lassen sich in sechs Gruppen unterteilen. Drei der sechs Gruppen dienen der Darstellung der Ziffern. Diese drei Gruppen sind die Dezimalziffern \mymath{Z_D = \lbrace{ z \in \mathbb{N} \mid z \geq 0 \wedge z \le 10 \rbrace}}, die Kleinbuchstabenziffern \mymath{Z_K = \lbrace{ \letter{a},\ \letter{b},\ \ldots\ ,\ \letter{z} \rbrace}}, sowie die Großbuchstabenziffern \mymath{Z_G = \lbrace{\letter{A},\ \letter{B},\ \ldots\ ,\letter{Z}\rbrace}}. Neben den Ziffern gibt es noch die Zifferntrenner \mymath{T = \lbrace{ \letter{.},\ \letter{,},\ \letter{-},\ \letter{/},\ \letter{'}\rbrace}}, die Exponentenmarker \mymath{E = \lbrace{ \letter{e},\ \letter{E} \rbrace}} und die Vorzeichen $V = \{\letter{-}\}$. Aus deren Vereinigung ergibt sich das Zahlenalphabet $Z = Z_D \cup Z_K \cup Z_G \cup T \cup E \cup V$.
+
+Nicht alle Ziffernsymbole werden zu jeder Zeit als Bestandteil einer Zahl erkannt. Welche Ziffern zulässig sind, hängt von dem in der Variable BASE gespeicherten Wert ab. Die Variable BASE wird im Weiteren mit $b$ bezeichnet. Ihr Wert gibt die Anzahl zulässiger Ziffern an. Die Menge der zulässigen Dezimalziffern ergibt sich unter Berücksichtigung von $b$ mittels $Z_{D,b} = \{ z \in \mathbb{N} \mid z \geq 0 \wedge z \le 10 \wedge z \le b \}$. Die Menge der zulässigen Kleinbuchstabenziffern unter Berücksichtigung von $b$ lautet $Z_{K,b} = \{ k \in K \mid ord(k)\ -\ ord(\letter{a})\ \le b - b_d \}$.
+
+Die Menge aller zulässigen Ziffernsymbole ergibt sich mittels $Z = Z_D$
+
+Sie sind in den folgenden Syntaxdiagrammen dargestellt:
+
+\begin{minipage}{\linewidth}
+\centering
+\begin{tikzpicture}
+\foreach \i [evaluate=\i as \x using \i*1.5] in {0,1} {
+	\node[circle, draw, minimum height=1cm] at (\x,-1.5) (A) {\i};
+	\draw[-latex] (\x, -0.5) -- (A.north);
+	\draw[] (A.south) -- (\x, -2.5);
+}
+\node[circle, draw, minimum height=1cm] at (4.5,-1.5) (A) {9};
+\draw[-latex] (4.5, -0.5) -- (A.north);
+\draw[] (A.south) -- (4.5, -2.5);
+\draw[] (-1.5, -0.5) -- (4.5, -0.5);
+\draw[-latex] (0, -2.5cm) -- (6, -2.5);
+\node at (3, -1.5) {\ldots};
+\end{tikzpicture}
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+\centering
+\begin{tikzpicture}
+\foreach \i/\l [evaluate=\i as \x using \i*1.5] in {0/A,1/B} {
+	\node[circle, draw, minimum height=1cm] at (\x,-1.5cm) (A) {\l};
+	\draw[-latex] (\x, -0.5) -- (A.north);
+	\draw[] (A.south) -- (\x, -2.5);
+}
+\node[circle, draw, minimum height=1cm] at (4.5,-1.5cm) (A) {Z};
+\draw[-latex] (4.5, 0) -- (A.north);
+\draw[] (A.south) -- (4.5, -2.5);
+\draw[] (-1.5, 0) -- (4.5, 0);
+\draw[-latex] (0, -2.5) -- (6cm, -2.5);
+\node at (3, -1.5) {\ldots};
+\end{tikzpicture}
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+\centering
+\begin{tikzpicture}
+	\foreach \i/\l [evaluate=\i as \x using \i*1.5] in {0/a,1/b} {
+		\node[circle, draw, minimum height=1cm] at (\x,-1.5cm) (A) {\l};
+		\draw[-latex] (\x, 0) -- (A.north);
+		\draw[] (A.south) -- (\x, -3cm);
+	}
+	\node[circle, draw, minimum height=1cm] at (4.5,-1.5cm) (A) {z};
+	\draw[-latex] (4.5, 0) -- (A.north);
+	\draw[] (A.south) -- (4.5, -3cm);
+	\draw[] (-1.5cm, 0) -- (4.5cm, 0);
+	\draw[-latex] (0, -3cm) -- (6cm, -3cm);
+	\node at (3cm, -1.5cm) {\ldots};
+\end{tikzpicture}
+\end{minipage}
+
+Nicht immer sind alle Ziffern erlaubt. Welche Ziffern akzeptiert werden hängt von der eingestellten Zahlenbasis ab. Die Zahlenbasis wird normalerweise der Variable BASE entnommen. Durch das Voranstellen eines Basismarkers kann die Basis jedoch explizit angegeben werden. Die möglichen Basiskarker sind im folgenden Syntaxdiagramm zu sehen:
+
+\begin{minipage}{\linewidth}
+	\centering
+	\begin{tikzpicture}
+	\foreach \i/\c [evaluate=\i as \x using \i*1.5] in {0/{\#},1/{\$},2/{\%}} {
+		\node[circle, draw, minimum height=1cm] at (\x,-1.5cm) (A) {\c};
+		\draw[-latex] (\x, 0) -- (A.north);
+		\draw[] (A.south) -- (\x, -3cm);
+	}
+	\draw[] (-1.5cm, 0) -- (3cm, 0);
+	\draw[-latex] (0, -3cm) -- (4.5cm, -3cm);
+	\end{tikzpicture}
+\end{minipage}
+
+Der Basismarker \# steht für eine dezimale Basis. Somit sind nur Dezimale Ziffern von 0-9 gestattet. Der Basismarker \$ steht für eine Hexadezimale Basis. 
+Ist $\textrm{BASE} \leq 10$, so werden Buchstabenziffern nicht berücksichtigt. Ist $\textrm{BASE} \geq 10$ so werden alle Kleinbuchstabenziffern berücksichtigt, für die $c \le \textrm{ord}(\textrm{'a'}) + \textrm{BASE} - 10$ gilt, sowie alle Großbuchstabenziffern, für die $c \le \textrm{ord}(\textrm{'A'}) + \textrm{BASE} - 10$ gilt.
+
+\begin{minipage}{\linewidth}
+\centering
+\begin{tikzpicture}
+\foreach \i/\c [evaluate=\i as \x using \i*1.5] in {0/{.},1/{,},2/{-},3/{/}} {
+	\node[circle, draw, minimum height=1cm] at (\x,-1.5cm) (A) {\c};
+	\draw[-latex] (\x, 0) -- (A.north);
+	\draw[] (A.south) -- (\x, -3cm);
+}
+\draw[] (-1.5cm, 0) -- (4.5cm, 0);
+\draw[-latex] (0, -3cm) -- (6cm, -3cm);
+\end{tikzpicture}
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+\centering
+\begin{tikzpicture}
+\foreach \i/\l [evaluate=\i as \y using \i*1.5] in {0/Dezimalziffer, 1/Großbuchstabenziffer, 2/Kleinbuchstabenziffer} {
+	\node[rectangle, draw, minimum height=1cm, minimum width=4cm] at (0,-\y) (A) {\l};
+	\draw[-latex] (-3.5cm, -\y) -- (A.west);
+	\draw[] (A.east) -- (3.5cm, -\y);
+	\draw[] (-3.5cm, 0cm) -- (-3.5cm, -3cm);
+	\draw[] (3.5cm, 0cm) -- (3.5cm, -3cm);
+	\draw[] (-3.5cm, 0) -- (-5cm, 0);
+	\draw[-latex] (3.5, 0) -- (5, 0);
+}
+\end{tikzpicture}
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+\centering
+\begin{tikzpicture}
+\node[rectangle, draw, minimum height=1cm] at (0,0) (A) {Ziffer};
+\draw[-latex] (A.east) -- (3, 0);
+\draw[-latex] (-3,0) -- (A.west);
+\draw[] (1.5, 0) -- (1.5, 1.5);
+\draw[] (1.5, 1.5) -- (-1.5, 1.5);
+\draw[-latex] (-1.5, 1.5) -- (-1.5, 0);
+\end{tikzpicture}
+\end{minipage}
+
+\lipsum[10]
+\lipsum[10]
+\lipsum[10]
+
+%\end{multicols}
+
+\end{document}

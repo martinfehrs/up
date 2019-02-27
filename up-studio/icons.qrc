@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/neutral">
+        <file>icons/add.png</file>
+        <file>stylesheets/darkorange.qss</file>
+        <file>fonts/saxmono.ttf</file>
+        <file>icons/multiline.png</file>
+        <file>icons/run.png</file>
+        <file>icons/clear.png</file>
+        <file>fonts/texgyreadventor.otf</file>
+        <file>fonts/railway.ttf</file>
+        <file>fonts/AftaSerifThin-Regular.otf</file>
+        <file>icons/docks.png</file>
+        <file>icons/singleline.png</file>
+        <file>layouts/default.lay</file>
+        <file>icons/app.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,150 @@
+#main-window {
+    background: #555;
+}
+
+* {
+    font-family: "texgyreadventor";
+    font-size: 9pt;
+}
+
+#main-window QTabWidget {
+    padding: 5px;
+}
+
+QTableWidget {
+    font-family: saxmono;
+    font-size: 11pt;
+    background: #CCC;
+    color: #222;
+    gridline-color: #BBB;
+    outline: 0;
+}
+
+QTableWidget::item {
+    border-bottom: 2px solid transparent;
+    padding: 5px;
+}
+
+QTableView::item:focus {
+    border-bottom: 2px solid #e5c348;
+}
+
+QTableWidget::item:selected {
+    border-bottom: 2px solid #e5c348;
+    background: #DDD;
+    color: #222;
+}
+
+QTableWidget::item:selected:active {
+    background: #555;
+    color: white;
+}
+
+QHeaderView::section {
+    background: #CCC;
+    color: #222;
+    border: none;
+    padding: 5px;
+    border-bottom: 1px solid #AAA;
+}
+
+QScrollBar {
+    border: none;
+    background-color: #555;
+    width: 8px;
+}
+
+QScrollBar::add-page, QScrollBar::sub-page {
+    border: none;
+}
+
+QScrollBar::add-line {
+    border: none;
+    background: none;
+}
+
+QScrollBar::sub-line {
+    border: none;
+    background: none;
+}
+
+QScrollBar::handle {
+    border-top: 1px solid #f3e5b0;
+    border-left: 1px solid #f3e5b0;
+    border-right: 1px solid #a48517;
+    border-bottom: 1px solid #a48517;
+    background: #e5c348;
+    margin: 1px;
+}
+
+QTabBar::tab {
+    min-height: 32px;
+}
+
+QTabWidget QToolButton {
+    min-width: 32px;
+    min-height: 32px;
+    border: none;
+}
+
+QTextEdit {
+    background: transparent;
+    color: white;
+    border-bottom: 0;
+    font-family: "saxmono";
+    font-size: 12pt;
+}
+
+QToolButton[class=input-button] {
+    /*background: #444;*/
+    /*padding-top:2px;
+    padding-bottom:2px;*/
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+QSplitter[class=central-widget] {
+    padding: 0;
+    margin: 0;
+}
+
+QTextEdit[class=output-window] {
+    background: #222;
+}
+
+InputBar {
+    background: #444;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+
+InputBar QTextEdit {
+    color: black;
+    font-family: "saxmono";
+    font-size: 12pt;
+    background: #CCC;
+    border: 1px solid gray;
+    padding: 0;
+    margin: 0;
+    padding-left: 6px;
+}
+
+InputBar QTextEdit[class=single-line] {
+    /*padding-top: 2px;*/
+}
+
+/*
+InputBar QTextEdit[class=multiline] {
+    padding-left: 6px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+*/
+
+
+InputBar QTextEdit::focus {
+    border: 1px inset #e5c348;
+}
+
