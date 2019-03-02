@@ -13,8 +13,8 @@ int main(int argc, char *argv[])
     const QString style(styleFile.readAll());
 
     app.setStyleSheet(style);
-    app.setApplicationDisplayName("Up - Development Studio");
-    app.setApplicationName("Up - Development Studio");
+    app.setApplicationDisplayName("Pushup - An graphical shell for the Up language");
+    app.setApplicationName("Pushup");
 
     QIcon appIcon(":/neutral/icons/app.png");
 

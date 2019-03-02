@@ -1,7 +1,7 @@
 TEMPLATE = subdirs
 
 SUBDIRS += makeup \
-           up-studio \
+           pushup \
            up-test
 
 
