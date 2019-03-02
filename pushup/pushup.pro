@@ -8,6 +8,8 @@ QT += widgets
 
 DEFINES += QT_DEPRECATED_WARNINGS
 
+VPATH += src
+
 SOURCES += main.cpp \
            mainwindow.cpp \
            sessionwindow.cpp \
@@ -24,7 +26,7 @@ HEADERS += mainwindow.hpp \
            managelayoutsdialog.hpp \
            savelayoutsdialog.hpp \
            publishingstorage.hpp \
-    uibackend.hpp
+           uibackend.hpp
 
 RESOURCES += icons.qrc
 
